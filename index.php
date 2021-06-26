@@ -15,55 +15,60 @@
 
             <!-- Blog Entries Column -->
             <div class="col-md-8">
+                <?php
+                    $query = 'SELECT * FROM posts';
 
-                <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
-                </h1>
+                    $select_all_post_query =  mysqli_query($connection,$query);
 
-                <!-- First Blog Post -->
-                <h2>
-                    <a href="#">Blog Post Title</a>
-                </h2>
-                <p class="lead">
-                    by <a href="index.php">Start Bootstrap</a>
-                </p>
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
-                <hr>
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-                <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    while($r = mysqli_fetch_assoc($select_all_post_query)){
+                        $post_title = $r['post_title'];
+                        $post_author = $r['post_author'];
+                        $post_date = $r['post_date'];
+                        $post_image = $r['post_image'];
+                        $post_content = $r['post_content'];
+                        ?>
 
-                <hr>
+                        <h1 class="page-header">
+                            Page Heading
+                            <small>Secondary Text</small>
+                        </h1>
 
-
+                        <!-- First Blog Post -->
+                        <h2>
+                            <a href="#"><?php echo $post_title; ?></a>
+                        </h2>
+                        <p class="lead">
+                            by <a href="index.php"><?php echo $post_author; ?></a>
+                        </p>
+                        <p><span class="glyphicon glyphicon-time"></span><?php echo 'Posted on'. ' ' .$post_date; ?></p>
+                        <hr>
+                        <img class="img-responsive" src="./images/<?php echo $post_image ?>" alt="">
+                        <hr>
+                        <p><?php echo $post_content; ?></p>
+                        <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                        <hr>
+                        <?php
+                    }
+                        ?>
+                ?>
             </div>
-              <!-- Blog Sidebar Widgets Column -->
-
+            <!-- Blog Sidebar Widgets Column -->
             <?php
                 include "./includes/sidebar.php";
             ?>
-     
-
-
-
-              <!-- /.row -->
-                </div>
-
-                <!-- Side Widget Well -->
-                <div class="well">
-                    <h4>Side Widget Well</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-                </div>
-
-            </div>
-
-        </div>
         <!-- /.row -->
+        </div>
+        <!-- Side Widget Well -->
+        <div class="well">
+            <h4>Side Widget Well</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+        </div>
+                </div>
+                </div>
+                <!-- /.row -->
 
-        <hr>
-<?php
-    include "./includes/footer.php";
-?>
-     
+                <hr>
+                <?php
+                    include "./includes/footer.php";
+                ?>
+        
