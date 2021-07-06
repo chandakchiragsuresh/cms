@@ -23,7 +23,9 @@
                     while($r = mysqli_fetch_assoc($result)){
                         echo "<li><a href='#'>{$r['cat_title']}</a></li>";
                     }
+
                     ?>
+                    <li><a href="./admin">Admin/LogIn</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
